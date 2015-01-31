@@ -47,12 +47,18 @@ namespace EPPZ.Blog.IEnumerator_Example_C
 
 		void Start()
 		{
-			// Enumerate points (recursive).
-			IEnumerator pointEnumerator = polygon.PointEnumerator();
-			while (pointEnumerator.MoveNext())
+			float start = Time.realtimeSinceStartup;
+			for (int i = 0; i < 100000; i++)
 			{
-				Debug.Log(pointEnumerator.Current);
+				// Enumerate points (recursive).
+				IEnumerator pointEnumerator = polygon.PointEnumerator ();
+				while (pointEnumerator.MoveNext())
+				{
+					// Debug.Log (pointEnumerator.Current);
+				}
 			}
+			float end = Time.realtimeSinceStartup;
+			Debug.Log("100000 enumerations using IEnumerator: "(end - start)+" ms lapsed ().");
 		}
 	}
 }
